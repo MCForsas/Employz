@@ -1,6 +1,6 @@
 package com.mcforsas.employz.gameObjects;
 
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mcforsas.employz.GameLauncher;
@@ -41,14 +41,14 @@ public class Button extends GameObject {
     public void touchDown(float x, float y) {
         super.touchDown(x, y);
         if(Utils.isOnSprite(sprite, x, y)){
-            sprite.setTexture(GameLauncher.getAssetHandler().getTexture("sprExample"));
+            sprite.setColor(Color.DARK_GRAY);
         }
     }
 
     @Override
     public void touchUp(float x, float y) {
         super.touchUp(x, y);
-        sprite.setTexture(GameLauncher.getAssetHandler().getTexture("sprBadlogic"));
+        sprite.setColor(Color.WHITE);
         if(Utils.isOnSprite(sprite, x, y)){
             screen.onClick(type);
         }

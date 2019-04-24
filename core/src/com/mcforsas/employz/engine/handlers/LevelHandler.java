@@ -135,6 +135,14 @@ public class LevelHandler extends Renderable {
         }
     }
 
+    public void gotoLevel(Level level){
+        if(!levels.contains(level)) {
+            addLevel(level);
+        }
+        endLevel();
+        setCurrentLevel(level);
+    }
+
     public Level getCurrentLevel() {
         return currentLevel;
     }

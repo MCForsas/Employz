@@ -10,15 +10,14 @@ import com.mcforsas.employz.gameObjects.ElementContainer;
 
 /**
  * Created by mcforsas on 19.4.24
- * Main screen
+ * Replace this text by description, of what this code is for
  */
-public class MainAppScreen extends AppScreen {
-
+public class BusinessMenuScreen extends AppScreen {
     private ElementContainer elementContainer;
 
     @Override
     public void start() {
-        this.sprite = new Sprite(GameLauncher.getAssetHandler().getTexture("sprExample"));
+        this.sprite = new Sprite(GameLauncher.getAssetHandler().getTexture("sprBadlogic"));
         this.sprite.setBounds(
                 0,
                 0,
@@ -31,17 +30,20 @@ public class MainAppScreen extends AppScreen {
 
         super.start();
 
-        Button buttonEmployee = new Button(ButtonTypes.mainMenuEmployee, this);
-        Button buttonEmployer = new Button(ButtonTypes.mainMenuEmployer, this);
+        Button buttonHasABusiness = new Button(ButtonTypes.businessMenuHasABusiness, this);
+        Button buttonCreateABusiness = new Button(ButtonTypes.businessMenuCreate, this);
+        Button buttonPartnership = new Button(ButtonTypes.businessMenuPartnership, this);
 
-        elementContainer = new ElementContainer(2,1,10,10, width, heigth);
-        elementContainer.addElement(buttonEmployee,0,0);
-        elementContainer.addElement(buttonEmployer,1,0);
+        elementContainer = new ElementContainer(3,1,10,10, width, heigth);
+        elementContainer.addElement(buttonHasABusiness,0,0);
+        elementContainer.addElement(buttonCreateABusiness,1,0);
+        elementContainer.addElement(buttonPartnership,2,0);
 
         addGameObject(elementContainer);
 
-        addGameObject(buttonEmployee);
-        addGameObject(buttonEmployer);
+        addGameObject(buttonCreateABusiness);
+        addGameObject(buttonHasABusiness);
+        addGameObject(buttonPartnership);
 
         setDepth(100);
 
@@ -49,14 +51,6 @@ public class MainAppScreen extends AppScreen {
 
     @Override
     public void onClick(ButtonTypes buttonType) {
-        switch (buttonType){
-            case mainMenuEmployee:
-                Utils.warn("employee");
-                break;
-            case mainMenuEmployer:
-                Utils.warn("employer");
-                GameLauncher.getLevelHandler().gotoLevel(new BusinessMenuScreen());
-                break;
-        }
+
     }
 }

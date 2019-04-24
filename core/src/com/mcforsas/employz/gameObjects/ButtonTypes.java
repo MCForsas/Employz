@@ -7,5 +7,8 @@ package com.mcforsas.employz.gameObjects;
 public enum ButtonTypes {
     mainMenuEmployee,
     mainMenuEmployer,
-    mainMenuLogin
+    mainMenuLogin,
+    businessMenuHasABusiness,
+    businessMenuCreate,
+    businessMenuPartnership,
 }
