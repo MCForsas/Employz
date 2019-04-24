@@ -1,6 +1,7 @@
 package com.mcforsas.employz.gameObjects;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mcforsas.employz.GameLauncher;
 import com.mcforsas.employz.engine.core.GameObject;
 import com.mcforsas.employz.engine.core.Utils;
@@ -25,9 +26,6 @@ public class Button extends GameObject {
         super.start();
         GameLauncher.getInputHandler().addInputListener(this);
         this.sprite = new Sprite(GameLauncher.getAssetHandler().getTexture("sprBadlogic"));
-        this.sprite.setSize(level.getWidth()/2,level.getHeigth()/8);
-        this.sprite.setOriginCenter();
-        this.sprite.setOriginBasedPosition(level.getWidth()/2,level.getHeigth()/2);
     }
 
     @Override
@@ -47,10 +45,9 @@ public class Button extends GameObject {
         }
     }
 
-
-
     @Override
-    public void update(float deltaTime) {
-        super.update(deltaTime);
+    public void render(SpriteBatch spriteBatch, float deltaTime) {
+        super.render(spriteBatch, deltaTime);
+        //Utils.warnf("%f,%f,%f,%f",sprite.getX(),sprite.getY(),sprite.getWidth(),sprite.getHeight());
     }
 }
