@@ -3,11 +3,9 @@ package com.mcforsas.employz.gameObjects;
 import com.mcforsas.employz.engine.core.GameObject;
 import com.mcforsas.employz.engine.core.Utils;
 
-import java.lang.reflect.Array;
-
 /**
  * Created by mcforsas on 19.4.24
- * Contains UiElements, displays them in a grid
+ * Contains UiElements, displays them in a grid.
  */
 public class ElementContainer extends GameObject{
     private int rows, columns;

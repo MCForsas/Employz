@@ -1,5 +1,6 @@
 package com.mcforsas.employz.gameObjects;
 
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mcforsas.employz.GameLauncher;
@@ -26,6 +27,14 @@ public class Button extends GameObject {
         super.start();
         GameLauncher.getInputHandler().addInputListener(this);
         this.sprite = new Sprite(GameLauncher.getAssetHandler().getTexture("sprBadlogic"));
+
+    }
+
+    @Override
+    public void update(float deltaTime) {
+        super.update(deltaTime);
+        this.x = sprite.getBoundingRectangle().x;
+        this.y = sprite.getBoundingRectangle().y;
     }
 
     @Override

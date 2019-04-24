@@ -2,6 +2,7 @@ package com.mcforsas.employz.levels;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.mcforsas.employz.GameLauncher;
+import com.mcforsas.employz.engine.core.Engine;
 import com.mcforsas.employz.engine.core.Utils;
 import com.mcforsas.employz.gameObjects.Button;
 import com.mcforsas.employz.gameObjects.ButtonTypes;
@@ -18,7 +19,16 @@ public class MainAppScreen extends AppScreen {
     @Override
     public void start() {
         this.sprite = new Sprite(GameLauncher.getAssetHandler().getTexture("sprExample"));
-        this.sprite.setBounds(0,0, width, heigth);
+        this.sprite.setBounds(
+                0,
+                0,
+                width * (1 + Engine.getRenderHandler().getMaxAspectDeviation()),
+                heigth * (1 + Engine.getRenderHandler().getMaxAspectDeviation())
+        );
+
+        this.sprite.setOriginCenter();
+        this.sprite.setOriginBasedPosition(width/2,heigth/2);
+
         super.start();
 
         Button buttonEmployee = new Button(ButtonTypes.mainMenuEmployee, this);
