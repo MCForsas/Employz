@@ -5,6 +5,7 @@ import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.math.Vector3;
 import com.mcforsas.employz.GameLauncher;
 import com.mcforsas.employz.engine.core.InputListener;
+import com.mcforsas.employz.engine.core.Utils;
 
 import java.util.Vector;
 

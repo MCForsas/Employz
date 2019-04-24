@@ -4,7 +4,6 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mcforsas.employz.engine.handlers.*;
-import com.mcforsas.employz.levels.LevelExample;
 
 import java.util.NoSuchElementException;
 
@@ -97,7 +96,6 @@ public class Engine extends ApplicationAdapter {
 	 * After all the assets are loaded and main object created, start the game - setup default.
 	 */
 	protected void startGame(){
-		levelHandler.addLevel(new LevelExample());
 		try {
 			levelHandler.startFirstLevel();
 		}catch (NoSuchElementException e){

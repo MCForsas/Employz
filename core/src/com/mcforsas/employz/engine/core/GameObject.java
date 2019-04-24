@@ -30,4 +30,12 @@ public abstract class GameObject extends Renderable{
     public void setLevel(Level level) {
         this.level = level;
     }
+
+    public boolean isPaused() {
+        return isPaused;
+    }
+
+    public void setPaused(boolean paused) {
+        isPaused = paused;
+    }
 }

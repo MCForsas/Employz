@@ -8,9 +8,9 @@ import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.mcforsas.employz.engine.core.Engine;
 import com.mcforsas.employz.engine.handlers.CameraHandler;
 import com.mcforsas.employz.engine.handlers.FileHandler;
-import com.mcforsas.employz.levels.LevelExample;
+import com.mcforsas.employz.levels.MainAppScreen;
 
-/*
+/**
  * Created by mcforsas on 19.4.21
  * Game object. All the config and constants should be set here
  */
@@ -19,8 +19,8 @@ public class GameLauncher extends Engine {
     //Config here
     public GameLauncher() {
         FPS = 120;
-        WORLD_WIDTH = 1000;
-        WORLD_HEIGHT = 1000;
+        WORLD_WIDTH = 90;
+        WORLD_HEIGHT = 160;
         RESOLUTION_H = 1080/4;
         RESOLUTION_V = 1920/4;
     }
@@ -32,7 +32,7 @@ public class GameLauncher extends Engine {
         OrthographicCamera cameraHandler = new CameraHandler(.1f,50f);
         renderHandler.setup(
                 cameraHandler,
-                new ExtendViewport(WORLD_WIDTH/8, WORLD_HEIGHT/8, cameraHandler),
+                new ExtendViewport(WORLD_WIDTH, WORLD_HEIGHT, cameraHandler),
                 maxAspectDeviation
         );
 
@@ -41,9 +41,8 @@ public class GameLauncher extends Engine {
 
     }
 
-    @Override
     protected void startGame() {
-        levelHandler.addLevel(new LevelExample());
+        levelHandler.addLevel(new MainAppScreen());
         super.startGame();
     }
 
