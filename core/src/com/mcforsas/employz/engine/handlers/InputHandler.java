@@ -6,6 +6,7 @@ import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.math.Vector3;
 import com.mcforsas.employz.GameLauncher;
 import com.mcforsas.employz.engine.core.InputListener;
+import com.mcforsas.employz.engine.core.TextInputListener;
 import com.mcforsas.employz.engine.core.Utils;
 
 import java.util.Vector;
@@ -16,7 +17,7 @@ import java.util.Vector;
  */
 public class InputHandler implements InputProcessor, Input.TextInputListener {
     private Vector<InputListener> listeners = new Vector<InputListener>(); //Listeners
-    private Vector<Input.TextInputListener> textInputListeners = new Vector<Input.TextInputListener>();
+    TextInputListener textInputListener = null;
 
     private final boolean isDebugKeystrokesShown = false;
 
@@ -128,18 +129,28 @@ public class InputHandler implements InputProcessor, Input.TextInputListener {
     }
 
    //region <Call textInput listeners>
-    @Override
+
+    public void getTextInput(TextInputListener listener, String title, String text, String hint){
+        setTextInputListener(listener);
+        Gdx.input.getTextInput(this, title, text, hint);
+    }
+
     public void input(String text) {
-        for(int i = 0; i < textInputListeners.size(); i++){
-            textInputListeners.get(i).input(text);
-        }
+        textInputListener.input(text);
     }
 
     @Override
     public void canceled() {
-        for(int i = 0; i < textInputListeners.size(); i++){
-            textInputListeners.get(i).canceled();
-        }
+        textInputListener.canceled();
     }
-   //endregion
+
+    public TextInputListener getTextInputListener() {
+        return textInputListener;
+    }
+
+    private void setTextInputListener(TextInputListener textInputListener) {
+        this.textInputListener = textInputListener;
+    }
+
+    //endregion
 }

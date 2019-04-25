@@ -8,6 +8,7 @@ import com.mcforsas.employz.engine.core.Utils;
 import com.mcforsas.employz.gameObjects.Button;
 import com.mcforsas.employz.gameObjects.ButtonTypes;
 import com.mcforsas.employz.gameObjects.ElementContainer;
+import com.mcforsas.employz.gameObjects.TextHandler;
 
 /**
  * Created by mcforsas on 19.4.24
@@ -39,7 +40,6 @@ public class MainAppScreen extends AppScreen {
         elementContainer.addElement(buttonEmployer,1,0);
 
         addGameObject(elementContainer);
-
         addGameObject(buttonEmployee);
         addGameObject(buttonEmployer);
 

@@ -7,6 +7,7 @@ import com.mcforsas.employz.engine.core.Utils;
 import com.mcforsas.employz.gameObjects.Button;
 import com.mcforsas.employz.gameObjects.ButtonTypes;
 import com.mcforsas.employz.gameObjects.ElementContainer;
+import com.mcforsas.employz.gameObjects.InputField;
 
 /**
  * Created by mcforsas on 19.4.24
@@ -32,18 +33,18 @@ public class BusinessMenuScreen extends AppScreen {
 
         Button buttonHasABusiness = new Button(ButtonTypes.businessMenuHasABusiness, this);
         Button buttonCreateABusiness = new Button(ButtonTypes.businessMenuCreate, this);
-        Button buttonPartnership = new Button(ButtonTypes.businessMenuPartnership, this);
+        InputField inputField = new InputField(ButtonTypes.businessMenuPartnership, this);
 
         elementContainer = new ElementContainer(3,1,10,10, width, heigth, true, 70, 30, ElementContainer.Aligment.Bottom);
         elementContainer.addElement(buttonHasABusiness,0,0);
         elementContainer.addElement(buttonCreateABusiness,1,0);
-        elementContainer.addElement(buttonPartnership,2,0);
+        elementContainer.addElement(inputField,2,0);
 
         addGameObject(elementContainer);
 
         addGameObject(buttonCreateABusiness);
         addGameObject(buttonHasABusiness);
-        addGameObject(buttonPartnership);
+        addGameObject(inputField);
 
         setDepth(100);
 
