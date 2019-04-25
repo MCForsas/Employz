@@ -1,5 +1,6 @@
 package com.mcforsas.employz.levels;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.mcforsas.employz.GameLauncher;
 import com.mcforsas.employz.engine.core.Engine;
@@ -29,12 +30,11 @@ public class MainAppScreen extends AppScreen {
         this.sprite.setOriginCenter();
         this.sprite.setOriginBasedPosition(width/2,heigth/2);
 
-        super.start();
 
         Button buttonEmployee = new Button(ButtonTypes.mainMenuEmployee, this);
         Button buttonEmployer = new Button(ButtonTypes.mainMenuEmployer, this);
 
-        elementContainer = new ElementContainer(2,1,10,10, width, heigth);
+        elementContainer = new ElementContainer(2,1,10,10, width, heigth, true, 70,30, ElementContainer.Aligment.Top);
         elementContainer.addElement(buttonEmployee,0,0);
         elementContainer.addElement(buttonEmployer,1,0);
 
@@ -42,6 +42,8 @@ public class MainAppScreen extends AppScreen {
 
         addGameObject(buttonEmployee);
         addGameObject(buttonEmployer);
+
+        super.start();
 
         setDepth(100);
 
@@ -52,6 +54,7 @@ public class MainAppScreen extends AppScreen {
         switch (buttonType){
             case mainMenuEmployee:
                 Utils.warn("employee");
+                Gdx.input.setOnscreenKeyboardVisible(true);
                 break;
             case mainMenuEmployer:
                 Utils.warn("employer");

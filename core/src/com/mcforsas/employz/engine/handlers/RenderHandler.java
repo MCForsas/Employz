@@ -78,10 +78,14 @@ public class RenderHandler {
         Gdx.gl.glClearColor(0, .06f, .02f, 1); //Set background color
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        if (currentCamera instanceof CameraHandler) {
-            ((CameraHandler) currentCamera).updatePosition(xTo, yTo, deltaTime);
-        }else{
-            currentCamera.position.set(xTo, yTo, CAMERA_Z);
+        try {
+            if (currentCamera instanceof CameraHandler) {
+                ((CameraHandler) currentCamera).updatePosition(xTo, yTo, deltaTime);
+            } else {
+                currentCamera.position.set(xTo, yTo, CAMERA_Z);
+            }
+        }catch (NullPointerException e){
+            e.printStackTrace();
         }
 
         if (isCameraBounded){
@@ -124,7 +128,11 @@ public class RenderHandler {
     }
 
     public void resize(int width, int height){
-        currentViewport.update(width, height);
+        try{
+            currentViewport.update(width, height);
+        }catch (NullPointerException e){
+            e.printStackTrace();
+        }
     }
     //region <Camera>
 
@@ -245,6 +253,7 @@ public class RenderHandler {
 
     public void setCurrentViewport(Viewport viewport) {
         this.currentViewport = viewport;
+        resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
     }
 
     public Camera getCurrentCamera() {

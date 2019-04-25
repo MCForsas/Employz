@@ -34,7 +34,7 @@ public class BusinessMenuScreen extends AppScreen {
         Button buttonCreateABusiness = new Button(ButtonTypes.businessMenuCreate, this);
         Button buttonPartnership = new Button(ButtonTypes.businessMenuPartnership, this);
 
-        elementContainer = new ElementContainer(3,1,10,10, width, heigth);
+        elementContainer = new ElementContainer(3,1,10,10, width, heigth, true, 70, 30, ElementContainer.Aligment.Bottom);
         elementContainer.addElement(buttonHasABusiness,0,0);
         elementContainer.addElement(buttonCreateABusiness,1,0);
         elementContainer.addElement(buttonPartnership,2,0);
