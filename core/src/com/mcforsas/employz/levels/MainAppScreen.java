@@ -20,7 +20,7 @@ public class MainAppScreen extends AppScreen {
 
     @Override
     public void start() {
-        this.sprite = new Sprite(GameLauncher.getAssetHandler().getTexture("sprExample"));
+        this.sprite = new Sprite(GameLauncher.getAssetHandler().getTexture("sprBackground"));
         this.sprite.setBounds(
                 0,
                 0,

@@ -1,11 +1,11 @@
 package com.mcforsas.employz.gameObjects;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mcforsas.employz.GameLauncher;
 import com.mcforsas.employz.engine.core.TextInputListener;
 import com.mcforsas.employz.engine.core.Utils;
 import com.mcforsas.employz.levels.AppScreen;
+import com.mcforsas.employz.levels.BusinessProfileScreen;
 
 /**
  * Created by mcforsas on 19.4.24
@@ -14,6 +14,7 @@ import com.mcforsas.employz.levels.AppScreen;
 public class InputField extends Button implements TextInputListener {
     private String input = "";
     private TextHandler textHandler;
+    private boolean isClickedOn = false;
 
     public InputField(ButtonTypes type, AppScreen screen) {
         super(type, screen);
@@ -21,10 +22,10 @@ public class InputField extends Button implements TextInputListener {
 
     @Override
     public void touchDown(float x, float y) {
-        //super.touchDown(x, y);
-        if (Utils.isOnSprite(this.sprite, x, y)) {
+        if (Utils.isOnSprite(this.sprite, x, y) && !isClickedOn) {
             //TODO: Make not hard coded
             GameLauncher.getInputHandler().getTextInput(this, "Email", "", "username@mail.com");
+            isClickedOn = true;
         }
     }
 
@@ -32,13 +33,14 @@ public class InputField extends Button implements TextInputListener {
     public void input(String input) {
         this.input = input;
         GameLauncher.getFileHandler().putPreferences("email",input);
-        super.touchDown(this.x, this.y);
+        GameLauncher.getLevelHandler().gotoLevel(new BusinessProfileScreen());
     }
 
     @Override
     public void canceled() {
         //Debug:
         Utils.warn("canceled");
+        isClickedOn = false;
     }
 
     @Override

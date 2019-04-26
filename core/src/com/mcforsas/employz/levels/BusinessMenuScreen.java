@@ -32,7 +32,7 @@ public class BusinessMenuScreen extends AppScreen {
 
         Button buttonHasABusiness = new Button(ButtonTypes.businessMenuHasABusiness, this);
         Button buttonCreateABusiness = new Button(ButtonTypes.businessMenuCreate, this);
-        Button buttonPartnership = new InputField(ButtonTypes.businessMenuPartnership, this);
+        Button buttonPartnership = new Button(ButtonTypes.businessMenuPartnership, this);
 
         elementContainer = new ElementContainer(3,1,10,10, width, heigth, true, 70, 30, ElementContainer.Aligment.Bottom);
         elementContainer.addElement(buttonHasABusiness,0,0);
@@ -41,8 +41,8 @@ public class BusinessMenuScreen extends AppScreen {
 
         addGameObject(elementContainer);
 
-        addGameObject(buttonCreateABusiness);
         addGameObject(buttonHasABusiness);
+        addGameObject(buttonCreateABusiness);
         addGameObject(buttonPartnership);
 
         setDepth(100);
@@ -51,6 +51,8 @@ public class BusinessMenuScreen extends AppScreen {
 
     @Override
     public void onClick(ButtonTypes buttonType) {
-        GameLauncher.getLevelHandler().gotoLevel(new RegisterScreen());
+        if(buttonType == ButtonTypes.businessMenuCreate || buttonType == ButtonTypes.businessMenuHasABusiness || buttonType == ButtonTypes.businessMenuPartnership) {
+            GameLauncher.getLevelHandler().gotoLevel(new RegisterScreen());
+        }
     }
 }

@@ -52,7 +52,19 @@ public class GameLauncher extends Engine {
     protected void loadAssets() {
         assetHandler.addToQueue(Texture.class, "sprBadlogic", "badlogic.jpg");
         assetHandler.addToQueue(Texture.class, "sprExample", "example.jpg");
+        assetHandler.addToQueue(Texture.class, "sprBackground","plainBackground.jpg");
+        assetHandler.addToQueue(Texture.class, "sprBtnMainMenuEmployee","btnMainMenuEmployee.png");
+        assetHandler.addToQueue(Texture.class, "sprBtnMainMenuLogin","btnMainMenuLogin.png");
+        assetHandler.addToQueue(Texture.class, "sprBtnMainMenuEmployer","btnMainMenuEmployer.png");
+        assetHandler.addToQueue(Texture.class, "sprBtnBusinessMenuHasABusiness","btnBusinessMenuHasABusiness.png");
+        assetHandler.addToQueue(Texture.class, "sprBtnBusinessMenuCreate","btnBusinessMenuCreate.png");
+        assetHandler.addToQueue(Texture.class, "sprBtnBusinessMenuPartnership","btnBusinessMenuPartnership.png");
+        assetHandler.addToQueue(Texture.class, "sprBtnJobMenuAccept", "btnJobMenuAccept.png");
+        assetHandler.addToQueue(Texture.class, "sprBtnJobMenuDecline", "btnJobMenuDecline.png");
+
+
         assetHandler.addToQueue(BitmapFont.class, "fntUbuntuMono", "ubuntuMono.fnt");
+
         assetHandler.addToQueue(Music.class, "musExample","example.ogg");
         assetHandler.addToQueue(Sound.class, "sndExample","test.wav");
         super.loadAssets();

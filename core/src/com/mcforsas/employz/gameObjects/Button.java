@@ -16,6 +16,7 @@ public class Button extends GameObject {
 
     ButtonTypes type;
     AppScreen screen;
+    private boolean isClickedOn = false;
 
     public Button(ButtonTypes type, AppScreen screen) {
         this.type = type;
@@ -26,7 +27,40 @@ public class Button extends GameObject {
     public void start() {
         super.start();
         GameLauncher.getInputHandler().addInputListener(this);
-        this.sprite = new Sprite(GameLauncher.getAssetHandler().getTexture("sprBadlogic"));
+        String textureName = "";
+        switch (type) {
+            case mainMenuEmployee:
+                textureName = "sprBtnMainMenuEmployee";
+                break;
+            case mainMenuEmployer:
+                textureName = "sprBtnMainMenuEmployer";
+                break;
+            case mainMenuLogin:
+                textureName = "sprBtnMainMenuLogin";
+                break;
+            case businessMenuHasABusiness:
+                textureName = "sprBtnBusinessMenuHasABusiness";
+                break;
+            case businessMenuCreate:
+                textureName = "sprBtnBusinessMenuCreate";
+                break;
+            case businessMenuPartnership:
+                textureName = "sprBtnBusinessMenuPartnership";
+                break;
+            case jobMenuAccept:
+                textureName = "sprBtnJobMenuAccept";
+                break;
+            case jobMenuDecline:
+                textureName = "sprBtnJobMenuDecline";
+                break;
+            default:
+                textureName = "sprExample";
+        }
+
+        this.sprite = new Sprite(GameLauncher.getAssetHandler().getTexture(textureName));
+        if(type == ButtonTypes.gotoMainMenu){
+            sprite.setBounds(0,0,level.getWidth(),10);
+        }
 
     }
 
@@ -42,6 +76,7 @@ public class Button extends GameObject {
         super.touchDown(x, y);
         if(Utils.isOnSprite(sprite, x, y)){
             sprite.setColor(Color.DARK_GRAY);
+            isClickedOn = true;
         }
     }
 
@@ -49,14 +84,19 @@ public class Button extends GameObject {
     public void touchUp(float x, float y) {
         super.touchUp(x, y);
         sprite.setColor(Color.WHITE);
-        if(Utils.isOnSprite(sprite, x, y)){
+        if(Utils.isOnSprite(sprite, x, y) && isClickedOn){
             screen.onClick(type);
+            Utils.warn("Clicked: " + type.toString());
+        }else{
+            isClickedOn = false;
         }
     }
 
     @Override
     public void render(SpriteBatch spriteBatch, float deltaTime) {
-        super.render(spriteBatch, deltaTime);
+        if(type != ButtonTypes.gotoMainMenu)
+            super.render(spriteBatch, deltaTime);
+
         //Utils.warnf("%f,%f,%f,%f",sprite.getX(),sprite.getY(),sprite.getWidth(),sprite.getHeight());
     }
 }

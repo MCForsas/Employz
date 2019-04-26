@@ -12,5 +12,6 @@ public enum ButtonTypes {
     businessMenuCreate,
     businessMenuPartnership,
     jobMenuAccept,
-    jobMenuDecline
+    jobMenuDecline,
+    gotoMainMenu
 }
