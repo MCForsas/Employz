@@ -29,10 +29,6 @@ public class InputHandler implements InputProcessor, Input.TextInputListener {
         for(int i = 0; i < listeners.size(); i++){
             listeners.get(i).keyDown(keycode);
         }
-
-        //Debug:
-        if(isDebugKeystrokesShown)
-            Utils.warn("keydown: " + keycode);
         return true;
     }
 
@@ -41,11 +37,6 @@ public class InputHandler implements InputProcessor, Input.TextInputListener {
         for(int i = 0; i < listeners.size(); i++){
             listeners.get(i).keyUp(keycode);
         }
-
-        //Debug:
-        if(isDebugKeystrokesShown)
-            Utils.warn("keyup: " + keycode);
-
 
         return true;
     }
@@ -59,9 +50,6 @@ public class InputHandler implements InputProcessor, Input.TextInputListener {
         for(int i = 0; i < listeners.size(); i++){
             listeners.get(i).touchDown(worldCoordinates.x,worldCoordinates.y);
         }
-        //Debug:
-        if(isDebugKeystrokesShown)
-            Utils.warn("touchDown: " + screenX + ":" + screenY + "|button");
         return true;
     }
 
@@ -74,9 +62,6 @@ public class InputHandler implements InputProcessor, Input.TextInputListener {
         for(int i = 0; i < listeners.size(); i++){
             listeners.get(i).touchUp(worldCoordinates.x, worldCoordinates.y);
         }
-        //Debug:
-        if(isDebugKeystrokesShown)
-            Utils.warn("touchUp: " + screenX + ":" + screenY + "|button");
 
 
         return true;

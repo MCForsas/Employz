@@ -53,11 +53,9 @@ public class MainAppScreen extends AppScreen {
     public void onClick(ButtonTypes buttonType) {
         switch (buttonType){
             case mainMenuEmployee:
-                Utils.warn("employee");
-                Gdx.input.setOnscreenKeyboardVisible(true);
+                GameLauncher.getLevelHandler().gotoLevel(new JobSearchScreen());
                 break;
             case mainMenuEmployer:
-                Utils.warn("employer");
                 GameLauncher.getLevelHandler().gotoLevel(new BusinessMenuScreen());
                 break;
         }

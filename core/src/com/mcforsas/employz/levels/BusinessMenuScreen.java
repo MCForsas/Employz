@@ -3,7 +3,6 @@ package com.mcforsas.employz.levels;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.mcforsas.employz.GameLauncher;
 import com.mcforsas.employz.engine.core.Engine;
-import com.mcforsas.employz.engine.core.Utils;
 import com.mcforsas.employz.gameObjects.Button;
 import com.mcforsas.employz.gameObjects.ButtonTypes;
 import com.mcforsas.employz.gameObjects.ElementContainer;
@@ -33,18 +32,18 @@ public class BusinessMenuScreen extends AppScreen {
 
         Button buttonHasABusiness = new Button(ButtonTypes.businessMenuHasABusiness, this);
         Button buttonCreateABusiness = new Button(ButtonTypes.businessMenuCreate, this);
-        InputField inputField = new InputField(ButtonTypes.businessMenuPartnership, this);
+        Button buttonPartnership = new InputField(ButtonTypes.businessMenuPartnership, this);
 
         elementContainer = new ElementContainer(3,1,10,10, width, heigth, true, 70, 30, ElementContainer.Aligment.Bottom);
         elementContainer.addElement(buttonHasABusiness,0,0);
         elementContainer.addElement(buttonCreateABusiness,1,0);
-        elementContainer.addElement(inputField,2,0);
+        elementContainer.addElement(buttonPartnership,2,0);
 
         addGameObject(elementContainer);
 
         addGameObject(buttonCreateABusiness);
         addGameObject(buttonHasABusiness);
-        addGameObject(inputField);
+        addGameObject(buttonPartnership);
 
         setDepth(100);
 
@@ -52,6 +51,6 @@ public class BusinessMenuScreen extends AppScreen {
 
     @Override
     public void onClick(ButtonTypes buttonType) {
-
+        GameLauncher.getLevelHandler().gotoLevel(new RegisterScreen());
     }
 }
